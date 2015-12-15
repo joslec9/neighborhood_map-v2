@@ -1,0 +1,405 @@
+body {
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.settings {
+  margin-right: 10px;
+  max-width: 240px;
+  z-index: 100;
+  position: fixed;
+  bottom: 30px;
+  left: 20px;
+}
+
+.settings-icon {
+  background-color: #6666ff;
+  border-radius: 100%;
+  width: 45px;
+  height: 44px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  border: 0px;
+  padding: 0px;
+  outline: 0;
+  margin-right: auto;
+  margin-left: 0px;
+  display: block;
+  cursor: pointer;
+}
+
+.settings-icon:before {
+  background: url("../images/settings.png");
+  background-size: 30px;
+  display: block;
+  height: 30px;
+  width: 30px;
+  content: "";
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.settings-icon:hover {
+  background-color: #ff9999;
+}
+
+.pointy {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #FFFFFF;
+  margin-right: auto;
+  margin-left: 11px;
+  margin-bottom: 5px;
+}
+
+.settings-box {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  max-width: 240px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+}
+
+.settings-title {
+  margin: 0px;
+  margin-bottom: 15px;
+  color: #535353;
+  cursor: default;
+}
+
+.settings-area {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 10px;
+  width: 100%;
+  border: 2px solid transparent;
+  font-size: 15px;
+  line-height: 20px;
+  display: block;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.settings-area:hover {
+  border: 2px solid #FFCC80;
+}
+
+.search-bar {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  max-width: 500px;
+  width: 90%;
+  height: 32px;
+  display: flex;
+  z-index: 101;
+  position: fixed;
+  margin-left: 20px;
+  top: 20px;
+}
+
+.search-area {
+  margin: 0px;
+  padding: 0px;
+  padding-left: 10px;
+  border: none;
+  font-size: 15px;
+  line-height: 20px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.search-area:focus,
+.settings-area:focus {
+  border: 2px solid #6666ff;
+}
+
+.search-button {
+  background-color: #6666ff;
+  width: 72px;
+  height: 32px;
+  border: 0px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 0px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.search-button:before {
+  background: url("../images/search.png");
+  background-size: 17px;
+  display: block;
+  height: 17px;
+  width: 17px;
+  content: "";
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-button:hover {
+  background-color: #6666ff;
+}
+
+.search-button:active,
+.settings-icon:active {
+  background-color: #6666ff;
+}
+
+.list-title {
+  color: #535353;
+  padding-left: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  max-width: 300px;
+  width: 300px;
+  margin: 0px;
+  padding-top: 15px;
+  padding-bottom: 17px;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.list-title:hover {
+  background-color: #FAFAFA;
+}
+
+.list-title:active {
+  background-color: #EEEEEE;
+}
+
+.list-title h2 {
+  margin: 0px;
+  margin-left: 3px;
+}
+
+.infowindow {
+  width: 200px;
+  font-size: 13px;
+}
+
+#infolistBox {
+  max-width: 300px;
+  padding-left: 2px;
+  padding-right: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  z-index: 102;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: #FFFFFF;
+}
+
+.infolist {
+  font-size: 13px;
+  list-style: none;
+  max-width: 300px;
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.infolist::-webkit-scrollbar {
+  width: 10px;
+  overflow: visible;
+}
+
+.infolist::-webkit-scrollbar-thumb {
+  background-color: #FF9800;
+  min-height: 28px;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+.infolist::-webkit-scrollbar-thumb:hover {
+  background-color: #FF6D00;
+}
+
+hr {
+  background: #e6e6e6;
+  height: 1px;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 15px; 
+}
+
+.infolist li {
+  padding: 15px;
+  padding-bottom: 25px;
+  padding-top: 0px;
+  color: #535353;
+  cursor: pointer;
+}
+
+.infolist li:hover {
+  background-color: #e5f2ff;
+}
+
+.infolist li:active {
+  background-color: #ff9999;
+}
+
+.infowindow p,
+.infolist p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.v-name {
+  font-weight: bold;
+  font-size: 15px;
+  color: #404040;
+}
+
+p.v-category,
+p.v-address,
+p.v-contact {
+  margin-bottom: 10px;
+}
+
+.v-link {
+  color: #4272db;
+  text-decoration: none;
+}
+
+.fs-icon {
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.v-rating {
+  color: #FF9800;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 5px;
+  line-height: 20px;
+  vertical-align: bottom;
+}
+
+.rating-stars {
+  width: 70px;
+}
+
+.no-result {
+  position: fixed;
+  top: 120px;
+  right: 110px;
+  color: #9E9E9E;
+}
+
+.slider {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  #infolistBox {
+    display: none;
+  }
+
+  .settings {
+    bottom: 115px;
+  }
+
+  .animate {
+    transition: transform 0.3s ease-out;
+  }
+
+  .slider {
+    display: block;
+    width: 90%;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    bottom: 10px;
+    left: 10px;
+    z-index: 103;
+    position: fixed;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius: 3px;
+  }
+
+  .holder {
+    width: 2000%;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 90%;
+    height: 100%;
+    float: left;
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    color: #535353;
+  }
+
+  .slide p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .ms-touch.slider {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    
+    -ms-overflow-style: none;
+    /* Hides the scrollbar. */
+    
+    -ms-scroll-chaining: none;
+    /* Prevents Metro from swiping to the next tab or app. */
+    
+    -ms-scroll-snap-type: mandatory;
+    /* Forces a snap scroll behavior on your images. */
+    
+    -ms-scroll-snap-points-x: snapInterval(0%, 100%);
+    /* Defines the y and x intervals to snap to when scrolling. */
+  }
+
+  .left-arrow {
+    position: fixed;
+    left: 7px;
+    bottom: 30px;
+  }
+
+  .right-arrow {
+    position: fixed;
+    right: 7px;
+    bottom: 30px;
+  }
+
+  .no-result {
+    position: fixed;
+    bottom: 45px;
+    top: initial;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    color: #9E9E9E;
+  }
+}
