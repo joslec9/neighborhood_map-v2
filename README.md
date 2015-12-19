@@ -2,6 +2,7 @@ Neighborhood Map P5
 Jose Lechuga
 
 Follow the link to open the project:
+ http://joslec9.github.io/neighborhood_map-v2.
 
 Basic Description:
 A Single page map using the Google Maps API.
