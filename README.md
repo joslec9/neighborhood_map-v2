@@ -5,6 +5,7 @@ Follow the link to open the project:
  http://joslec9.github.io/neighborhood_map-v2.
 
 Basic Description:
+To run this application locally, close the repository and open index.html in your internet browser.
 A Single page map using the Google Maps API.
 Map markers identifying a number of favorite locations within New York City area.
 You can define a neighborhood you will like to visit in the settings (bottom left of the screen), and once you define a neighborhood, there will be 10 popular places displayed on the map with map markers. 

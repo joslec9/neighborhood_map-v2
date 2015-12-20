@@ -1,5 +1,10 @@
+// initialize the view model binding
+function initMap() {
+  ko.applyBindings(new MapViewModel());
+}
+
 // MapMarkerSet class contains information of map markers for searching.
-var MapMarkerSet = function(marker, name, category, position) {
+var MapMarkerSet = function (marker, name, category, position) {
   this.marker = marker,
   this.name = name,
   this.category = category,
@@ -47,17 +52,13 @@ function MapViewModel() {
     }
   };
 
-  // fit map height to window size
-  self.mapSize = ko.computed(function() {
-    $("#map").height($(window).height());
-  });
 
   // initialize the map
   initializeMap();
 
   // update the neighborhood
   self.computedNeighborhood = ko.computed(function() {
-    if (self.neighborhood() != '') {
+    if (self.neighborhood() !== '') {
       if (venueMarkers.length > 0) {
         removeVenue();
       }
@@ -84,11 +85,11 @@ function MapViewModel() {
     var venue;
     var list = [];
     var keyword = self.keyword().toLowerCase();
-    for (var i in self.topPicksList()) {
+    for (var i = 0; i < self.topPicksList().length; i++) {
       venue = self.topPicksList()[i].venue;
       if (venue.name.toLowerCase().indexOf(keyword) != -1 ||
         venue.categories[0].name.toLowerCase().indexOf(keyword) != -1) {
-        list.push(self.topPicksList()[i]);
+          list.push(self.topPicksList()[i]);
       }
     }
     self.filteredList(list);
@@ -169,13 +170,15 @@ function MapViewModel() {
           new google.maps.LatLng(bounds.ne.lat, bounds.ne.lng));
         map.fitBounds(mapBounds);
       }
-    });
+})
+    .fail(function() {
+  alert("We couldn't find any locations near " + name + ".  Please try a different location.");
+});
   }
-
   // callback method for neighborhood location
   function neighborhoodCallback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      getInformation(results[0])
+      getInformation(results[0]);
     }
   }
 
@@ -247,12 +250,11 @@ function MapViewModel() {
     venueMarkers.push(new MapMarkerSet(marker, name.toLowerCase(), category.toLowerCase(), position));
     marker.addListener('click', toggleBounce);
       function toggleBounce() {
-          if (marker.getAnimation() !== null) {
-              marker.setAnimation(null);
-          } else {
-              marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
-      }
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    window.setTimeout(function() {
+      marker.setAnimation(null);
+    }, 2100);
+}
     // DOM element for infowindow content
     var startingToken = '<div class="infowindow"><p><span class="v-name">' + name +
       '</span></p><p class="v-category"><span>' + category +
@@ -297,12 +299,6 @@ function MapViewModel() {
       venueMarkers.pop();
     }
   }
-
-  // make sure the map bounds get updated on page resize
-  window.addEventListener('resize', function(e) {
-    map.fitBounds(mapBounds);
-    $("#map").height($(window).height());
-  });
 
   // function for swipeable list on mobile screen
   // referenced from http://css-tricks.com/the-javascript-behind-touch-friendly-sliders
